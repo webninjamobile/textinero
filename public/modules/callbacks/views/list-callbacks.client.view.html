@@ -1,0 +1,19 @@
+<section data-ng-controller="CallbacksController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Callbacks</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="callback in callbacks" data-ng-href="#!/callbacks/{{callback._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="callback.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="callback.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="callback.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!callbacks.$resolved || callbacks.length">
+    	No Callbacks yet, why don't you <a href="/#!/callbacks/create">create one</a>?
+    </div>
+</section>
