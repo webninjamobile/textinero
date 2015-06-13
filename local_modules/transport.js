@@ -23,10 +23,10 @@ var chikkaAPI = {
  for replying only
  */
 
-exports.chikkaReply = function (mobile_number, message, callback) {
+exports.chikkaReply = function (data, message, callback) {
     chikkaAPI.message_type = 'REPLY';
     chikkaAPI.request_cost = 'FREE',
-        chikkaAPI.mobile_number = mobile_number;
+        chikkaAPI.mobile_number = data.mobile_number;
     chikkaAPI.message_id = makeid();
     chikkaAPI.request_id = data.request_id;
     chikkaAPI.message = message;
@@ -57,8 +57,10 @@ exports.chikkaSend = function (mobile_number, message, callback) {
     };
 
     client.post(process.env.CHIKKA_GATEWAY, args, function (data, response) {
+        console.log(args);
+        console.log(process.env.CHIKKA_GATEWAY);
         // parsed response body as js object
-        callback(data,response);
+        callback(data);
     });
 
 }

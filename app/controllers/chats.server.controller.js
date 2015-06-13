@@ -39,9 +39,10 @@ exports.create = function(req, res) {
 		} else {
             Friend.findById(chatData.friend).exec(function(err,data){
                 //console.log(data);
-                transport.chikkaSend(data.mobile, req.body.message, function (data, response) {
-                    console.log(data);
-                    console.log(response);
+                var mobile = data.mobile.substring(1, 12);
+                transport.chikkaSend('63'+mobile, req.body.message, function (data, response) {
+                    //console.log(data);
+                    //console.log(response);
 
                 })
             });
