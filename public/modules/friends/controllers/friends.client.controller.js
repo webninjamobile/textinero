@@ -65,7 +65,7 @@ angular.module('friends').controller('FriendsController', ['$scope', '$statePara
 		};
 
 		/***/
-
+		$scope.chats = [];
 		$scope.getChat = function(friend){
             $scope.friend.$promise.then(function (result) {
                 console.log(friend);
