@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
 	User = mongoose.model('User'),
+    Chat = mongoose.model('Chat'),
 	Friend = mongoose.model('Friend'),
 	transport = require('../../local_modules/transport.js'),
 	_this = this,
@@ -23,8 +24,16 @@ exports.inbound = function (req, res) {
 		if (!err && userData) {
 			//comment upon push
 			console.log("got it!");
+            //hack for now
+
+            var chat = new Chat();
+            chat.friend = userData;
+            chat.message = req.body.message;
+            chat.save();
+
 			transport.chikkaReply(req.body, 'Message Accepted', function (data, response) {
 			});
+            res.send('Accepted');
 		} else {
 			console.log("Friends not found");
 			res.send('Accepted');
