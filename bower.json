@@ -15,6 +15,7 @@
     "angular-ui-utils": "~0.1.1",
     "angular-ui-router": "~0.2.11",
     "angular-bootstrap-simple-chat": "~0.0.2",
-    "angular-scroll-glue": "~2.0.5"
+    "angular-scroll-glue": "~2.0.5",
+    "angular-pusher": "~0.0.14"
   }
 }

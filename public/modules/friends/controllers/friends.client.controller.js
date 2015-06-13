@@ -1,8 +1,8 @@
 'use strict';
 
 // Friends controller
-angular.module('friends').controller('FriendsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Friends','Chats',
-	function($scope, $stateParams, $location, Authentication, Friends,Chats) {
+angular.module('friends').controller('FriendsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Friends','Chats','Pusher',
+	function($scope, $stateParams, $location, Authentication, Friends,Chats,Pusher) {
 		$scope.authentication = Authentication;
 
 		// Create new Friend
@@ -101,7 +101,15 @@ angular.module('friends').controller('FriendsController', ['$scope', '$statePara
                 $scope.message = '';
             }
         };
-	}
+
+        Pusher.subscribe('logs', 'logs_event', function (item) {
+            //$scope.sound = ngAudio.load("sounds/beep.wav");
+            //$scope.sound.play();
+            console.log(item);
+            $scope.chats.push(item);
+        });
+
+	}// end
 
 
 ]);

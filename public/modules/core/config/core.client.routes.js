@@ -14,3 +14,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		});
 	}
 ]);
+
+
+angular.module('core', ['doowb.angular-pusher']).
+
+	config(['PusherServiceProvider',
+		function(PusherServiceProvider) {
+			PusherServiceProvider
+				.setToken('a395fe9917ab39b7b543')
+				.setOptions({});
+		}
+	]);
