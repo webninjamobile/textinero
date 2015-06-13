@@ -31,11 +31,13 @@ exports.inbound = function (req, res) {
             chat.message = req.body.message;
             chat.save();
 
-			transport.chikkaReply(req.body, 'Message Accepted', function (data, response) {
+			transport.chikkaReply(req.body, 'Message Accepted.', function (data, response) {
 			});
             res.send('Accepted');
 		} else {
 			console.log("Friends not found");
+            transport.chikkaReply(req.body, 'Message Not Accepted. You are not currently added as a friend.', function (data, response) {
+            });
 			res.send('Accepted');
 		}
 	});
