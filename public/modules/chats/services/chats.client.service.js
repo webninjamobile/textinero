@@ -7,6 +7,12 @@ angular.module('chats').factory('Chats', ['$resource',
 		}, {
 			update: {
 				method: 'PUT'
+			},
+			friend:{
+				url:'/chats/friend/:friend',
+				params: {friend: '@friend'},
+				method: 'GET',
+				isArray:true
 			}
 		});
 	}

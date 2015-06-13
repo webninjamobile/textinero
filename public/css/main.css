@@ -1,0 +1,18 @@
+[scroll-glue-top],
+[scroll-glue-bottom],
+[scroll-glue]{
+    height: 250px;
+    overflow-y: scroll;
+}
+
+[scroll-glue-left],
+[scroll-glue-right]{
+    width: 100px;
+    overflow-x: scroll;
+    padding: 10px;
+}
+
+[scroll-glue-left] span,
+[scroll-glue-right] span{
+
+}

@@ -9,6 +9,9 @@ module.exports = function(app) {
 		.get(chats.list)
 		.post(users.requiresLogin, chats.create);
 
+	app.route('/chats/friend/:friend')
+		.get(users.requiresLogin, chats.friend);
+
 	app.route('/chats/:chatId')
 		.get(chats.read)
 		.put(users.requiresLogin, chats.hasAuthorization, chats.update)
@@ -16,4 +19,5 @@ module.exports = function(app) {
 
 	// Finish by binding the Chat middleware
 	app.param('chatId', chats.chatByID);
+	app.param('friend', chats.friend);
 };

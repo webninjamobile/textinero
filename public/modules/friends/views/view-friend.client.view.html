@@ -1,0 +1,46 @@
+<section data-ng-controller="FriendsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1></h1>
+	</div>
+	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == friend.user._id))">
+		<a class="btn btn-primary" href="/#!/friends/{{friend._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<div class="col-md-12" ng-init="getChat(friend)">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				CHAT with {{friend.name}} | {{friend.mobile}}
+			</div>
+			<div class="panel-body" scroll-glue>
+				<ul class="media-list">
+
+					<li class="media" data-ng-repeat="chat in chats">
+
+						<div class="media-body">
+
+							<div class="media">
+								<div class="media-body">
+									<small class="text-muted">{{chat.friend.name}} {{chat.created | date:'medium'}}</small><br>
+									{{chat.message}}
+								</div>
+							</div>
+
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="panel-footer">
+				<div class="input-group">
+					<input type="text" placeholder="Enter Message" class="form-control" data-ng-model="message">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info" ng-click="sendMessage(message)">SEND</button>
+                                    </span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -10,15 +10,19 @@ var mongoose = require('mongoose'),
  * Chat Schema
  */
 var ChatSchema = new Schema({
-	name: {
+	message: {
 		type: String,
 		default: '',
-		required: 'Please fill Chat name',
+		required: 'Please fill Chat message',
 		trim: true
 	},
 	created: {
 		type: Date,
 		default: Date.now
+	},
+	friend: {
+		type: Schema.ObjectId,
+		ref: 'Friend'
 	},
 	user: {
 		type: Schema.ObjectId,

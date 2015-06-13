@@ -6,7 +6,22 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Chat = mongoose.model('Chat'),
+	Friend = mongoose.model('Friend'),
+    transport = require('../../local_modules/transport.js'),
 	_ = require('lodash');
+
+exports.friend = function(req,res){
+
+    Chat.find({friend:req.params.friend}).populate('friend', 'name').exec(function(err,data){
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.jsonp(data);
+        }
+    });
+}
 
 /**
  * Create a Chat
@@ -15,12 +30,22 @@ exports.create = function(req, res) {
 	var chat = new Chat(req.body);
 	chat.user = req.user;
 
-	chat.save(function(err) {
+	chat.save(function(err,chatData) {
+
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+            Friend.findById(chatData.friend).exec(function(err,data){
+                //console.log(data);
+                transport.chikkaSend(data.mobile, req.body.message, function (data, response) {
+                    console.log(data);
+                    console.log(response);
+
+                })
+            });
+
 			res.jsonp(chat);
 		}
 	});

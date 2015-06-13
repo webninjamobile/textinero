@@ -15,6 +15,7 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+				'public/css/main.css',
 				'public/lib/angular-bootstrap-simple-chat/src/css/style.css',
 			],
 			js: [

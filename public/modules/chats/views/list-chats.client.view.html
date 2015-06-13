@@ -2,18 +2,38 @@
     <div class="page-header">
         <h1>Chats</h1>
     </div>
-    <div class="list-group">
-        <a data-ng-repeat="chat in chats" data-ng-href="#!/chats/{{chat._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="chat.created | date:'medium'"></span>
-				by
-				<span data-ng-bind="chat.user.displayName"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="chat.name"></h4>
-        </a>
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                CHAT
+            </div>
+            <div class="panel-body" scroll-glue>
+                <ul class="media-list">
+
+                    <li class="media" data-ng-repeat="message in messages">
+
+                        <div class="media-body">
+
+                            <div class="media">
+                                <div class="media-body">
+                                    <small class="text-muted">{{message.username}} {{message.date}}</small><br>
+                                    {{message.content}}
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-footer">
+                <div class="input-group">
+                    <input type="text" placeholder="Enter Message" class="form-control" data-ng-model="message">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info" ng-click="sendMessage(message)">SEND</button>
+                                    </span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="alert alert-warning text-center" data-ng-hide="!chats.$resolved || chats.length">
-    	No Chats yet, why don't you <a href="/#!/chats/create">create one</a>?
-    </div>
+
 </section>
