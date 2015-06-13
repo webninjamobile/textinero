@@ -102,7 +102,7 @@ angular.module('friends').controller('FriendsController', ['$scope', '$statePara
             }
         };
 
-        Pusher.subscribe('logs', 'logs_event', function (item) {
+        Pusher.subscribe('ch_'+$stateParams.friendId, 'chat_event', function (item) {
             //$scope.sound = ngAudio.load("sounds/beep.wav");
             //$scope.sound.play();
             console.log(item);

@@ -26,6 +26,9 @@ var FriendSchema = new Schema({
 		required: 'Please fill Mobile Number',
 		trim: true,
 		validate: [validateMobileNumber, 'Mobile number format is invalid - eg: 09221234567']
+	},isConfirmed: {
+		type: Boolean,
+		default: false
 	},
 	created: {
 		type: Date,
