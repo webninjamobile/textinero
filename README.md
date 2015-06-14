@@ -1,4 +1,4 @@
-Textinero - Indinero Hackathon Entry
+Textinero
 ====================
 
       __                   __  .__                            
@@ -17,7 +17,7 @@ Textinero - Indinero Hackathon Entry
 
 ## To Deploy
 
-    Git pull && npm install
+    git clone && npm install
 
 ####(c) Keith Levi Lumanog -- June 13, 2015
 
